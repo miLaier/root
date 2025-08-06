@@ -1,0 +1,22 @@
+{
+  "name": "love-lab",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "node build.js",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "interactjs": "^1.10.27",
+    "lottie-web": "^5.13.0"
+  },
+  "devDependencies": {
+    "hammerjs": "^2.0.8",
+    "vite": "^7.0.6"
+  }
+}

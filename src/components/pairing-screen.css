@@ -1,0 +1,292 @@
+/* 设置根元素的基准尺寸，用于 rem 适配 */
+:root {
+    --design-width: 848;
+    --design-height: 1403;
+    font-size: calc(100vw / var(--design-width) * 10);
+}
+
+/* 基础元素类 */
+.element {
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 10.8rem;
+    height: 14.1rem;
+    cursor: move;
+    transition: transform 0.3s;
+}
+
+/* 导入的 PS CSS，转换为 rem 单位 */
+._6 {
+    background-image: url("../assets/6.png");
+    left: 14.5rem;
+    top: 22.6rem;
+    z-index: 13;
+}
+
+._7 {
+    background-image: url("../assets/7.png");
+    left: 28.8rem;
+    top: 22.8rem;
+    z-index: 12;
+}
+
+._8 {
+    background-image: url("../assets/8.png");
+    left: 41.8rem;
+    top: 22.8rem;
+    z-index: 11;
+}
+
+._10 {
+    background-image: url("../assets/10.png");
+    left: 68.6rem;
+    top: 22.3rem;
+    z-index: 10;
+}
+
+._9 {
+    background-image: url("../assets/9.png");
+    left: 56.0rem;
+    top: 22.5rem;
+    z-index: 9;
+}
+
+._1 {
+    background-image: url("../assets/1.png");
+    left: 9.9rem;
+    top: 17.7rem;
+    z-index: 8;
+}
+
+._2 {
+    background-image: url("../assets/2.png");
+    left: 24.2rem;
+    top: 17.9rem;
+    z-index: 7;
+}
+
+._3 {
+    background-image: url("../assets/3.png");
+    left: 37.2rem;
+    top: 17.9rem;
+    z-index: 6;
+}
+
+._5 {
+    background-image: url("../assets/5.png");
+    left: 64.0rem;
+    top: 17.4rem;
+    z-index: 5;
+}
+
+._4 {
+    background-image: url("../assets/4.png");
+    left: 51.4rem;
+    top: 17.6rem;
+    z-index: 4;
+}
+
+.舞台 {
+    border-width: 1px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    background-color: rgb(253, 197, 48);
+    opacity: 0.471;
+    position: absolute;
+    left: 5.6rem;
+    top: 48.9rem;
+    width: 73.6rem;
+    height: 31.7rem;
+    z-index: 3;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* 舞台上的固定位置样式 */
+.stage-position {
+    width: 12rem;
+    height: 15rem;
+    border: 0.2rem dashed rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+    transition: border-color 0.3s;
+}
+
+/* 匹配按钮样式 */
+.match-button {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 2rem;
+    padding: 1rem 3rem;
+    font-size: 1.8rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.match-button.active {
+    background-color: #4CAF50;
+    color: white;
+    box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,0.2);
+}
+
+.match-button.inactive {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+/* 成功卡片样式 */
+.success-card {
+    position: fixed;
+    bottom: -20rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.2);
+    transition: bottom 0.5s;
+    z-index: 100;
+    min-width: 30rem;
+    text-align: center;
+}
+
+.success-card.show {
+    bottom: 2rem;
+}
+
+.success-card h3 {
+    margin: 0 0 1rem;
+    color: #4CAF50;
+    font-size: 2rem;
+}
+
+.success-card p {
+    margin: 0;
+    font-size: 1.6rem;
+    color: #666;
+}
+
+/* 拖拽相关样式 */
+.element.dragging {
+    z-index: 1000;
+    cursor: grabbing;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    :root {
+        /* 在移动端下，基于视口宽度重新计算基准字号 */
+        font-size: calc(100vw / (var(--design-width) / 2) * 10);
+    }
+
+    .element {
+        /* 移动端下缩小元素尺寸 */
+        width: 8rem;
+        height: 10.5rem;
+    }
+
+    .stage-position {
+        width: 9rem;
+        height: 11.5rem;
+    }
+
+    .舞台 {
+        /* 移动端下调整舞台大小和位置 */
+        width: 90vw;
+        left: 5vw;
+        height: 40vh;
+        top: 40vh;
+    }
+
+    .match-button {
+        /* 移动端下调整按钮大小 */
+        padding: 1.2rem 2.5rem;
+        font-size: 1.6rem;
+        bottom: 1.5rem;
+    }
+
+    .success-card {
+        /* 移动端下调整成功卡片大小 */
+        min-width: 80vw;
+        padding: 1.5rem;
+    }
+
+    .success-card h3 {
+        font-size: 1.8rem;
+    }
+
+    .success-card p {
+        font-size: 1.4rem;
+    }
+}/* 自定义样式 */
+.element {
+    cursor: move;
+    transition: transform 0.3s;
+}
+
+.element.dragging {
+    z-index: 1000;
+}
+
+.match-button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+    padding: 10px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.match-button.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.match-button.inactive {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+.stage-position {
+    position: absolute;
+    width: 108px;
+    height: 141px;
+    border: 2px dashed #999;
+    opacity: 0.3;
+}
+
+.stage-position.position-a {
+    left: 200px;
+    top: 88px;
+}
+
+.stage-position.position-b {
+    right: 200px;
+    top: 88px;
+}
+
+.success-card {
+    position: fixed;
+    bottom: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    transition: bottom 0.5s;
+}
+
+.success-card.show {
+    bottom: 20px;
+}
